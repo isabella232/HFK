@@ -5,8 +5,10 @@
 package hfk.items;
 
 import hfk.PointF;
+import hfk.game.Resources;
 import hfk.mobs.Mob;
 import org.newdawn.slick.Color;
+import org.newdawn.slick.SpriteSheet;
 
 /**
  *
@@ -18,26 +20,30 @@ public class Armor extends InventoryItem{
 
 	public Armor(PointF pos) {
 		super(pos);
+		SpriteSheet sprites = Resources.getSpriteSheet("armor.png");
+		assert(sprites != null);
+		image = sprites.getSprite(0, 0);
 	}
 	
 	@Override
 	public String getDisplayName() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return "Armor";
 	}
 
 	@Override
 	public long getRarityScore() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return 1;
 	}
 
 	@Override
 	public Color getDisplayColor() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return Color.yellow;
 	}
 
 	@Override
 	public boolean use(Mob m, boolean fromInventory) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		//m.inventory.equipArmorFromInventory(this);
+		return false;
 	}
 	
 	

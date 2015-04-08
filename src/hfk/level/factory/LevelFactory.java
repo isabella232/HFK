@@ -12,6 +12,7 @@ import hfk.PointF;
 import hfk.PointI;
 import hfk.Shape;
 import hfk.game.GameController;
+import hfk.items.Armor;
 import hfk.items.InventoryItem;
 import hfk.level.ExplosiveBarrel;
 import hfk.level.Level;
@@ -64,7 +65,14 @@ public abstract class LevelFactory extends LevelGenerator {
 		addItems(l, s, rarity, ex);
 		addMobs(l, s, difficulty, ex);
 		if(barrelChance != null) addBarrels(l, s, ex);
+		addArmor(l, spawn, ex);
 		return l;
+	}
+
+	private void addArmor(Level level, PointI spawn, LinkedList<PointI> ex) {
+		PointI free = level.getNextFreeField(spawn, ex);
+		GameController ctrl = GameController.get();
+		ctrl.addItem(new Armor(free.toFloat()));
 	}
 
 	@Override
